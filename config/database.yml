@@ -1,21 +1,17 @@
-# SQLite. Versions 3.8.0 and up are supported.
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem "sqlite3"
-#
 default: &default
   adapter: postgresql
   database: matrix
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV['RAILS_DATABASE_USERNAME'] || 'postgres' %>
-  password: <%= ENV['RAILS_DATABASE_PASSWORD'] { '' } %>
-  host: <%= ENV['RAILS_DATABASE_HOST'] || 'localhost' %>
+  username: <%= ENV["RAILS_DATABASE_USERNAME"] || "mahmouddabbbagh" %>
+  password: <%= ENV["RAILS_DATABASE_PASSWORD"] || "password" %>
+  host: <%= ENV["RAILS_DATABASE_HOST"] || "db" %>
   encoding: utf8
+  port: 5432
 
 development:
   <<: *default
   database: matrix
+  password: <%= ENV["RAILS_DATABASE_PASSWORD"] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -27,8 +23,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: <%= ENV['RDS_DB_Name'] %>
-  username: <%= ENV['RDS_USERNAME'] %>
-  password: <%= ENV['RDS_PASSWORD'] %>
-  host: <%= ENV['RDS_HOSTNAME'] %>
-  port: <%= ENV['RDS_PORT'] %>
+  database: <%= ENV["RAILS_DATABASE_USERNAME"] %>
+  username: <%= ENV["RAILS_DATABASE_USERNAME"] %>
+  password: <%= ENV["RAILS_DATABASE_PASSWORD"] %>
+  host: <%= ENV["RAILS_DATABASE_HOST"] %>
+  port: 5432

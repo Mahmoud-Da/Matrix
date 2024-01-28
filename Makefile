@@ -1,11 +1,13 @@
 build:
 	docker-compose build
 
+build-no-cash:
+	docker-compose build --no-cache
 bash:
 	docker-compose run rails /bin/bash
 
 up:
-	docker-compose run --rm rails sh -c "bundle install && bundle exec rake db:create db:migrate"
+	# docker-compose run --rm rails sh -c "bundle install && bundle exec rake db:create db:migrate"
 	docker-compose up
 
 down:
